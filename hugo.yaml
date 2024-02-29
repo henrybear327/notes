@@ -1,0 +1,134 @@
+baseURL: https://henrybear327.github.io/notes/
+languageCode: en-us
+title: Henry's Blog
+theme: ["PaperMod"]
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+enableEmoji: true
+googleAnalytics: G-BMQLHPT1G2
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+languages:
+  en:
+    languageName: "English"
+    weight: 1
+    taxonomies:
+      category: categories
+      tag: tags
+      series: series
+    menu:
+      main:
+        - name: Search
+          url: search/
+          weight: 5
+        - name: Tags
+          url: tags/
+          weight: 10
+        - name: Categories
+          url: categories/
+          weight: 15
+        - name: Archive
+          url: archives
+          weight: 20
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+params:
+  env: production # to enable google analytics, opengraph, twitter-cards and schema.
+  title: Henry's Blog
+  description: "Henry's blog since 2024"
+  keywords: [Blog, Tech, Software, Code]
+  author: ["Chun-Hung Tseng"]
+  DateFormat: "January 2, 2006"
+  defaultTheme: auto # dark, light
+  disableThemeToggle: false
+
+  ShowReadingTime: true
+  ShowShareButtons: true
+  ShareButtons: ["facebook", "instagram", "linkedin", "x", "telegram", "whatsapp"]
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowWordCount: true
+  ShowRssButtonInSectionTermList: true
+  UseHugoToc: false
+  disableSpecial1stPost: false
+  disableScrollToTop: false
+  comments: false
+  hidemeta: false
+  hideSummary: false
+  showtoc: true
+  tocopen: true
+
+  label:
+    text: "Home"
+    icon: /apple-touch-icon.png
+    iconHeight: 35
+
+  # profile-mode
+  profileMode:
+    enabled: true # needs to be explicitly set
+    title: "Welcome to Henry's blog! \U0001F44B"
+    subtitle: "The new year resolution of 2024 - writing down my learning journey, weekly!"
+    imageUrl: "profile_zinal.jpg"
+    imageWidth: 240
+    imageHeight: 240
+    imageTitle: Zinal, Switzeland (2024)
+    buttons:
+      - name: Posts
+        url: posts
+      - name: Search
+        url: search
+
+  # home-info mode
+  # homeInfoParams:
+  #   Title: "Welcome to Henry's blog! \U0001F44B"
+  #   Content: The new year resolution of 2024 is to start the habit of writing and sharing my learning journey, weekly! 
+
+  socialIcons:
+    - name: github
+      url: "https://github.com/henrybear327?tab=repositories"
+    - name: linkedin
+      url: "https://www.linkedin.com/in/chun-hung-tseng/"
+
+  cover:
+    hidden: true # hide everywhere but not in structured data
+    hiddenInList: true # hide on list pages and home
+    hiddenInSingle: true # hide on single page
+
+  editPost:
+    URL: "https://github.com/henrybear327/notes/content"
+    Text: "Suggest Changes" # edit text
+    appendFilePath: true # to append file path to Edit link
+
+  # for search
+  # https://fusejs.io/api/options.html
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    limit: 10 # refer: https://www.fusejs.io/api/methods.html#search
+    keys: ["title", "permalink", "summary", "content"]
+
+pygmentsUseClasses: true
+markup:
+  highlight:
+    noClasses: false
+    anchorLineNos: true
+    codeFences: true
+    guessSyntax: true
+    lineNos: true
+    style: monokai

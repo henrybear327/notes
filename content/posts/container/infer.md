@@ -7,17 +7,15 @@ author: ["Chun-Hung Tseng"]
 draft: false
 ---
 
-In order to leverage [Infer](https://github.com/facebook/infer) to check the C/C++ and Python source code in rv32emu, we compile it from source. 
+In order to leverage the latest [Infer](https://github.com/facebook/infer) features to check all C/C++ and Python source code in [rv32emu](https://github.com/sysprog21/rv32emu), we need to compile it from source, since at the time of writing, the official release version is stuck at [v1.1.0](https://github.com/facebook/infer/releases/tag/v1.1.0) from May, 2021. 
 
-> At the time of writing, the official release version is stuck at [v1.1.0](https://github.com/facebook/infer/releases/tag/v1.1.0) from May, 2021. Thus, we have to build our own docker image to leverage the latest changes!
-
-The daily build is triggered and pushed to [sysprog21's DockerHub infer repo](https://hub.docker.com/repository/docker/sysprog21/infer/general) at UTC+8 0:00 every day. *Notice that this Docker image only runs on x86.*
+The daily build is triggered and pushed to [sysprog21's DockerHub infer repo](https://hub.docker.com/repository/docker/sysprog21/infer/general) at UTC+8 0:00 every day. *Notice that this Docker image only runs on x86*.
 
 # The `dockerfile`
 
-Assuming that the filename of the following content is copied into a file named `Dockerfile-infer`.
+This is the `dockerfile` behind each of the daily build.
 
-To build using the latest commit, and push to DockerHub, execute `docker buildx build --progress=plain --push --platform linux/amd64 --tag sysprog21/infer:latest -f Dockerfile-infer .` Each build will take several hours to complete.
+Assuming that the following content is copied into a file named `Dockerfile-infer`.
 
 ```dockerfile
 FROM ubuntu:22.04
@@ -39,6 +37,10 @@ RUN git clone https://github.com/facebook/infer.git && \
     make clean
 
 ```
+
+To build the Docker image using the latest infer commit and push to DockerHub, execute `docker buildx build --progress=plain --push --platform linux/amd64 --tag sysprog21/infer:latest -f Dockerfile-infer .` 
+
+Notice that each build will take several hours to complete.
 
 # Reference
 - [Upstream dockefile code](https://github.com/facebook/infer/commit/e4c65eb2a1851fb8aa02c1f632dc1a8274189b28)

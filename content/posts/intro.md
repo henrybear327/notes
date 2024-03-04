@@ -1,8 +1,8 @@
 ---
 title: 'Hello world!'
 date: 2024-02-29T19:45:37+01:00
-tags: ["Resolutions"]
-categories: ["Resolutions"]
+tags: ["resolutions"]
+categories: ["resolutions"]
 author: ["Chun-Hung Tseng"]
 draft: false
 ---

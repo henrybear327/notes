@@ -42,5 +42,13 @@ To build the Docker image using the latest infer commit and push to DockerHub, e
 
 Notice that each build will take several hours to complete.
 
+# Execution
+
+To check the codebase, execute `infer -- make ENABLE_SDL=0 ENABLE_LTO=0 ENABLE_EXT_F=0` in the container.
+
+Notice that
+- `ENABLE_SDL` and `ENABLE_EXT_F` are both set to 0 to exclude the analysis being run on external dependencies
+- `ENABLE_LTO` is set to 0 due to some unresolved bug with link-time optimization turned on
+
 # Reference
 - [Upstream dockefile code](https://github.com/facebook/infer/commit/e4c65eb2a1851fb8aa02c1f632dc1a8274189b28)

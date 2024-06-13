@@ -4,5 +4,5 @@ date: {{ .Date }}
 tags: ["diary"]
 categories: ["diary"]
 author: ["Chun-Hung Tseng"]
-draft: true
+draft: false
 ---

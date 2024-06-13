@@ -18,6 +18,8 @@ For other usages, please check the [demo blog posts](https://adityatelange.githu
 
 To start a new post, please run `hugo new content posts/<filename>.md`.
 
+To start a new diary post, please run `hugo new content --kind diary posts/diary/<filename>.md`.
+
 The posts are all in the directory `content/posts`.
 
 No need to build and push the artifacts anymore, CI will take care of it! ^_^

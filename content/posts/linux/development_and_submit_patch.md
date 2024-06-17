@@ -12,7 +12,9 @@ draft: false
 - kernel 開發筆記
     - vim 設定 `:set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab cindent cc=80`
     - 編譯 `make defconfig && make -j $(nproc)`
-    - 檢查 `./scripts/checkpatch.pl --patch`
+    - 檢查
+        - `./scripts/checkpatch.pl --patch`
+        - 使用 [sparse](https://www.kernel.org/doc/html/latest/dev-tools/sparse.html) -> `make C=1`
 - LKML 上提交 patch
     - [Generate patch](http://nickdesaulniers.github.io/blog/2017/05/16/submitting-your-first-patch-to-the-linux-kernel-and-responding-to-feedback/)
         - Generate patch `git format-patch HEAD~`
@@ -34,6 +36,8 @@ draft: false
                 name = ...
             ```
         - Try to send a patch using the instructions [here](https://git-send-email.io/#step-3) 
+    - Get the maintainer's email to send to 
+        - e.g. `./scripts/get_maintainer.pl -f include/linux/compiler.h`
     - [Reply review emails](https://wiki.openstack.org/wiki/MailingListEtiquette#Replies)
         - 針對 gmail 的 email, 改成 plain text mode, 就可以正常使用 reply all 解決
 - References

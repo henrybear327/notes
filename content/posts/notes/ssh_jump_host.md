@@ -64,6 +64,15 @@ Host targetServer
     ProxyJump jumphost
 ```
 
+Now you can do `ssh targetServer`! Easy :) 
+
+### scp usage tips
+
+Since we can do `ssh targetServer` directly, we can also move files around easily by 
+```
+scp -r targetServer:/full/file/path .
+```
+
 # References
 - https://www.tecmint.com/access-linux-server-using-a-jump-host/
 

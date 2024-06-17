@@ -53,7 +53,7 @@ USER $USERNAME
 RUN sudo apt-get update && \
     DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
     python3-pip git clang strace gdb valgrind \
-    vim clang-tidy clang clang-tools libsdl2-dev libsdl2-mixer-dev && \
+    vim clang-tidy clang clang-tools libsdl2-dev libsdl2-mixer-dev bc && \
     sudo rm -rf /var/lib/apt/lists/*
 
 # NOTICE the use of --break-system-packages
@@ -75,7 +75,6 @@ COPY --chown=$USERNAME:$USERNAME --from=base_sail /home/root/riscv_sim_RV32 /hom
 # Set the default directory
 WORKDIR /home/$USERNAME/rv32emu
 RUN make distclean
-
 ```
 
 ## Docker Hub images for the compiler and Sail

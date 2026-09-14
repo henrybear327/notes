@@ -6,6 +6,8 @@ Welcome!
 
 When cloning for the first time, please run `git submodule update --init --recursive`.
 
+After that, you can run `hugo serve` to see the website rendered locally.
+
 Please check the [official instructions](https://github.com/adityatelange/hugo-PaperMod/wiki/Installation) for more details.
 
 ## Set up

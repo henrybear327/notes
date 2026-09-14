@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 540" width="720" height="540" font-family="sans-serif" font-size="14" fill="currentColor" stroke="currentColor">
+  <style>svg{color:#1d1e20}.bg{fill:#fff}@media (prefers-color-scheme:dark){svg{color:#dadadb}.bg{fill:#1d1e20}}</style>
+  <rect class="bg" width="720" height="540" stroke="none"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" stroke="none"/>
+    </marker>
+  </defs>
+  <g stroke-width="1.5" fill="none">
+    <line x1="120" y1="42" x2="120" y2="525" stroke-dasharray="2 5" stroke-width="1"/>
+    <line x1="360" y1="42" x2="360" y2="525" stroke-dasharray="2 5" stroke-width="1"/>
+    <line x1="600" y1="42" x2="600" y2="525" stroke-dasharray="2 5" stroke-width="1"/>
+    <rect class="bg" x="20" y="50" width="200" height="40"/>
+    <rect class="bg" x="260" y="110" width="200" height="40"/>
+    <rect class="bg" x="260" y="170" width="200" height="40"/>
+    <rect class="bg" x="260" y="230" width="200" height="40"/>
+    <rect class="bg" x="500" y="290" width="200" height="40"/>
+    <rect class="bg" x="500" y="350" width="200" height="40"/>
+    <rect class="bg" x="260" y="410" width="200" height="40"/>
+    <rect class="bg" x="20" y="470" width="200" height="40"/>
+    <line x1="220" y1="80" x2="260" y2="120" marker-end="url(#a)"/>
+    <line x1="360" y1="150" x2="360" y2="170" marker-end="url(#a)"/>
+    <line x1="360" y1="210" x2="360" y2="230" marker-end="url(#a)"/>
+    <line x1="460" y1="260" x2="500" y2="300" marker-end="url(#a)"/>
+    <line x1="600" y1="330" x2="600" y2="350" marker-end="url(#a)"/>
+    <line x1="500" y1="380" x2="460" y2="420" marker-end="url(#a)"/>
+    <line x1="260" y1="440" x2="220" y2="480" marker-end="url(#a)"/>
+    <line x1="260" y1="200" x2="110" y2="470" stroke-dasharray="6 4" marker-end="url(#a)"/>
+  </g>
+  <g stroke="none" text-anchor="middle">
+    <text x="120" y="30">EL0: program</text>
+    <text x="360" y="30">EL1: shim</text>
+    <text x="600" y="30">elfuse process</text>
+    <text x="120" y="67">svc #0</text>
+    <text x="120" y="83" font-size="12">at 0x400010</text>
+    <text x="360" y="127">vector +0x400</text>
+    <text x="360" y="143" font-size="12">b svc_handler</text>
+    <text x="360" y="187">SAVE_GPRS</text>
+    <text x="360" y="203" font-size="12">256-byte frame</text>
+    <text x="360" y="255">LOAD_GPRS, hvc #5</text>
+    <text x="600" y="307">syscall_dispatch()</text>
+    <text x="600" y="323" font-size="12">handles write</text>
+    <text x="600" y="375">x0 = 6, x8 = 0</text>
+    <text x="360" y="427">cbz x8, cbz x7</text>
+    <text x="360" y="443" font-size="12">restore x1 to x30</text>
+    <text x="120" y="487">next instruction</text>
+    <text x="120" y="503" font-size="12">x0 = 6</text>
+    <g font-size="12" text-anchor="start">
+      <text x="488" y="274">exit</text>
+      <text x="490" y="412">hv_vcpu_run()</text>
+      <text x="250" y="478">eret</text>
+    </g>
+    <rect class="bg" x="30" y="316" width="124" height="36"/>
+    <g font-size="12" text-anchor="end">
+      <text x="150" y="330">fast path: eret</text>
+      <text x="150" y="346">with no exit (part 7)</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 600" width="720" height="600" font-family="sans-serif" font-size="14" fill="currentColor" stroke="currentColor">
+  <style>svg{color:#1d1e20}.bg{fill:#fff}@media (prefers-color-scheme:dark){svg{color:#dadadb}.bg{fill:#1d1e20}}</style>
+  <rect class="bg" width="720" height="600" stroke="none"/>
+
+  <g stroke-width="1.5" fill="none">
+    <rect x="250" y="50" width="240" height="36"/>
+    <rect x="250" y="96" width="240" height="36"/>
+    <rect x="250" y="132" width="240" height="24"/>
+    <rect x="250" y="156" width="240" height="44"/>
+    <rect x="250" y="200" width="240" height="24"/>
+    <rect x="250" y="254" width="240" height="36"/>
+    <rect x="250" y="320" width="240" height="36"/>
+    <rect x="250" y="386" width="240" height="36"/>
+    <rect x="250" y="442" width="240" height="36"/>
+    <rect x="250" y="498" width="240" height="36"/>
+    <rect x="250" y="548" width="240" height="24"/>
+    <path d="M500,96 h12 v128 h-12"/>
+    <line x1="370" y1="232" x2="370" y2="242" stroke-dasharray="2 3"/>
+    <line x1="370" y1="298" x2="370" y2="308" stroke-dasharray="2 3"/>
+    <line x1="370" y1="364" x2="370" y2="374" stroke-dasharray="2 3"/>
+    <line x1="370" y1="427" x2="370" y2="437" stroke-dasharray="2 3"/>
+    <line x1="370" y1="483" x2="370" y2="493" stroke-dasharray="2 3"/>
+    <line x1="370" y1="535" x2="370" y2="545" stroke-dasharray="2 3"/>
+  </g>
+  <g stroke="none">
+    <text x="370" y="30" text-anchor="middle">guest address space (not to scale)</text>
+    <text x="235" y="73" text-anchor="end" font-family="monospace" font-size="13">0xff00000000</text>
+    <text x="370" y="73" text-anchor="middle">dynamic linker</text>
+    <text x="235" y="119" text-anchor="end" font-family="monospace" font-size="13">0xfeffe00000</text>
+    <text x="370" y="112" text-anchor="middle">shim data and EL1 stack</text>
+    <text x="370" y="127" text-anchor="middle" font-size="12">2 MiB, EL1 only</text>
+    <text x="235" y="149" text-anchor="end" font-family="monospace" font-size="13">0xfeffdf6000</text>
+    <text x="370" y="149" text-anchor="middle">shim code</text>
+    <text x="235" y="183" text-anchor="end" font-family="monospace" font-size="13">0xfeff010000</text>
+    <text x="370" y="176" text-anchor="middle">page-table pool</text>
+    <text x="370" y="191" text-anchor="middle" font-size="12">3558 pages</text>
+    <text x="235" y="217" text-anchor="end" font-family="monospace" font-size="13">0xfeff000000</text>
+    <text x="370" y="217" text-anchor="middle">unmapped guard</text>
+    <text x="235" y="277" text-anchor="end" font-family="monospace" font-size="13">0x200000000</text>
+    <text x="370" y="270" text-anchor="middle">mmap: data</text>
+    <text x="370" y="285" text-anchor="middle" font-size="12">grows up from 8 GiB</text>
+    <text x="235" y="343" text-anchor="end" font-family="monospace" font-size="13">0x10000000</text>
+    <text x="370" y="336" text-anchor="middle">mmap: code</text>
+    <text x="370" y="351" text-anchor="middle" font-size="12">read and execute only</text>
+    <text x="235" y="409" text-anchor="end" font-family="monospace" font-size="13">0x7800000</text>
+    <text x="370" y="402" text-anchor="middle">stack</text>
+    <text x="370" y="417" text-anchor="middle" font-size="12">8 MiB, grows down</text>
+    <text x="235" y="465" text-anchor="end" font-family="monospace" font-size="13">0x1000000</text>
+    <text x="370" y="458" text-anchor="middle">brk region</text>
+    <text x="370" y="473" text-anchor="middle" font-size="12">grows up</text>
+    <text x="235" y="521" text-anchor="end" font-family="monospace" font-size="13">0x400000</text>
+    <text x="370" y="521" text-anchor="middle">program</text>
+    <text x="235" y="565" text-anchor="end" font-family="monospace" font-size="13">0xf000</text>
+    <text x="370" y="565" text-anchor="middle">vDSO page</text>
+    <text x="522" y="155">runtime reserve</text>
+    <text x="522" y="173" font-size="12">16 MiB below the</text>
+    <text x="522" y="189" font-size="12">dynamic linker</text>
+    <text x="522" y="72" font-size="12">4 GiB below the slab end</text>
+    <text x="522" y="516" font-size="12">4 MiB for a PIE</text>
+    <text x="522" y="464" font-size="12">at least 16 MiB</text>
+  </g>
+</svg>

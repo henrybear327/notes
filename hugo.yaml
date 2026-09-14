@@ -1,5 +1,5 @@
 baseURL: https://henrybear327.github.io/notes/
-languageCode: en-us
+locale: en-us
 title: Henry's Blog
 theme: ["PaperMod"]
 
@@ -16,7 +16,7 @@ minify:
 
 languages:
   en:
-    languageName: "English"
+    label: "English"
     weight: 1
     taxonomies:
       category: categories

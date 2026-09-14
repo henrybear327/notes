@@ -29,7 +29,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: "0.123.6"
+      HUGO_VERSION: "0.166.0"
     steps:
       - name: Install Hugo CLI
         run: |
@@ -44,8 +44,6 @@ jobs:
         uses: actions/configure-pages@v3
       - name: Get Theme
         run: git submodule update --init --recursive
-      - name: Update theme to Latest commit
-        run: git submodule update --remote --merge
       - name: Build with Hugo
         run: |
           hugo \

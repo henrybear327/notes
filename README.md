@@ -30,6 +30,8 @@ No need to build and push the artifacts anymore, CI will take care of it! ^_^
 
 Every pull request builds the site (drafts included) and runs markdownlint, typos, an offline link check, and actionlint; see `.github/workflows/ci.yml`.
 
+External links are checked every Monday by `.github/workflows/links.yml`, and a failed run is reported by email.
+
 To run the content checks locally:
 
 ```sh

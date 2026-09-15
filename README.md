@@ -32,6 +32,8 @@ Every pull request builds the site (drafts included) and runs markdownlint, typo
 
 External links are checked every Monday by `.github/workflows/links.yml`, and a failed run is reported by email.
 
+Dependabot opens monthly pull requests for the GitHub Actions and the PaperMod submodule. Hugo is not covered: bump `HUGO_VERSION` in `.github/workflows/gh-pages.yml` by hand, and CI builds with the new version on that pull request.
+
 To run the content checks locally:
 
 ```sh

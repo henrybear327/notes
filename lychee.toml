@@ -1,0 +1,7 @@
+exclude_path = ["public", "resources", "themes"]
+
+# Used by the weekly online run.
+max_retries = 3
+timeout = 30
+# 429 means the host is rate limiting the runner, not that the page is gone.
+accept = ["200..=299", "429"]

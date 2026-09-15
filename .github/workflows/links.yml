@@ -1,0 +1,20 @@
+name: Links
+
+on:
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Check all links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --no-progress --config lychee.toml 'content/**/*.md' README.md AGENTS.md

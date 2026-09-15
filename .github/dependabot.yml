@@ -1,0 +1,16 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+
+  # PaperMod. The CI build job decides whether a new commit is safe.
+  - package-ecosystem: gitsubmodule
+    directory: /
+    schedule:
+      interval: monthly

@@ -1,0 +1,91 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          submodules: recursive
+      - name: Install Hugo CLI
+        run: |
+          # Use the version the deploy workflow pins, so a bump there is
+          # built on its own pull request.
+          HUGO_VERSION=$(yq '.jobs.build.env.HUGO_VERSION' .github/workflows/gh-pages.yml)
+          [[ $HUGO_VERSION =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]
+          wget -O "$RUNNER_TEMP/hugo.deb" "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux-amd64.deb"
+          sudo dpkg -i "$RUNNER_TEMP/hugo.deb"
+      - name: Build published posts
+        run: hugo --gc --minify --printPathWarnings 2>&1 | tee "$RUNNER_TEMP/build.log"
+      - name: Build drafts and future posts
+        run: |
+          hugo --gc --minify --printPathWarnings --buildDrafts --buildFuture \
+            --destination "$RUNNER_TEMP/drafts" 2>&1 | tee -a "$RUNNER_TEMP/build.log"
+      - name: Reject build warnings
+        run: |
+          # PaperMod still uses template fields Hugo has deprecated, so
+          # deprecation notices are the only warnings let through.
+          if grep '^WARN' "$RUNNER_TEMP/build.log" | grep -v '^WARN  deprecated:'; then
+            exit 1
+          fi
+
+  markdownlint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Lint Markdown
+        uses: DavidAnson/markdownlint-cli2-action@v24
+      - name: Reject em dashes
+        env:
+          LC_ALL: C.UTF-8
+        run: |
+          if grep -rnP '\x{2014}' content README.md AGENTS.md; then
+            echo "::error::Replace the U+2014 em dashes listed above."
+            exit 1
+          fi
+
+  typos:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Check spelling
+        uses: crate-ci/typos@v1.50.2
+
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Check relative links and images
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --offline --no-progress --config lychee.toml 'content/**/*.md' README.md AGENTS.md
+
+  actionlint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Lint workflows
+        run: docker run --rm -v "$PWD:/repo" -w /repo rhysd/actionlint:1.7.12 -color

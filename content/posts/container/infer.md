@@ -7,19 +7,19 @@ author: ["Chun-Hung Tseng"]
 draft: false
 ---
 
-In order to leverage the latest [Infer](https://github.com/facebook/infer) features to check all C/C++ and Python source code in [rv32emu](https://github.com/sysprog21/rv32emu), we need to compile it from source, since at the time of writing, the official release version is stuck at [v1.1.0](https://github.com/facebook/infer/releases/tag/v1.1.0) from May, 2021. 
+In order to leverage the latest [Infer](https://github.com/facebook/infer) features to check all C/C++ and Python source code in [rv32emu](https://github.com/sysprog21/rv32emu), we need to compile it from source, since at the time of writing, the official release version is stuck at [v1.1.0](https://github.com/facebook/infer/releases/tag/v1.1.0) from May, 2021.
 
-The daily build is triggered and pushed to [sysprog21's Docker Hub infer repo](https://hub.docker.com/repository/docker/sysprog21/infer/general) at UTC+8 0:00 every day. *Notice that this Docker image only runs on x86*.
+The daily build is triggered and pushed to [sysprog21's Docker Hub infer repo](https://hub.docker.com/r/sysprog21/infer) at UTC+8 0:00 every day. *Notice that this Docker image only runs on x86*.
 
-# The `dockerfile` 
+## The `dockerfile`
 
-Here are the `dockerfile`s behind each of the daily build. 
+Here are the `dockerfile`s behind each of the daily build.
 
 Assuming that the `dockerfile` content is copied into a file named `Dockerfile-infer`.
 
-## Before and including commit `71a1166bce`
+### Before and including commit `71a1166bce`
 
-The image contains complied and working infer, along with all of the toolchains used to built it.
+The image contains compiled and working infer, along with all of the toolchains used to built it.
 
 Since this is not a release build, java analysis capability is not included.
 
@@ -44,9 +44,9 @@ RUN git clone https://github.com/facebook/infer.git && \
 
 ```
 
-## After commit `71a1166bce`
+### After commit `71a1166bce`
 
-The image contains complied and working infer, using the `create_binary_release.sh` script. We use the tarball and prepare the rv32emu compilation environment in the image.
+The image contains compiled and working infer, using the `create_binary_release.sh` script. We use the tarball and prepare the rv32emu compilation environment in the image.
 
 Since this is a release build, java analysis capability is included.
 
@@ -90,18 +90,20 @@ COPY --from=BUILD /infer-linux64-v1.2.0 /infer
 ENV PATH=/infer/bin:$PATH
 ```
 
-To build the Docker image using the latest infer commit and push to Docker Hub, execute `docker buildx build --progress=plain --push --platform linux/amd64 --tag sysprog21/infer:latest -f Dockerfile-infer .` 
+To build the Docker image using the latest infer commit and push to Docker Hub, execute `docker buildx build --progress=plain --push --platform linux/amd64 --tag sysprog21/infer:latest -f Dockerfile-infer .`
 
 Notice that each build will take about an hour to complete.
 
-# Execution (for rv32emu)
+## Execution (for rv32emu)
 
 To check the codebase, execute `infer -- make ENABLE_SDL=0 ENABLE_LTO=0 ENABLE_EXT_F=0` in the container.
 
 Notice that
+
 - `ENABLE_SDL` and `ENABLE_EXT_F` are both set to 0 to exclude the analysis being run on external dependencies
 - `ENABLE_LTO` is set to 0 due to some unresolved bug with link-time optimization turned on
 
-# References
-- [Upstream dockefile code](https://github.com/facebook/infer/commit/e4c65eb2a1851fb8aa02c1f632dc1a8274189b28)
+## References
+
+- [Upstream dockerfile code](https://github.com/facebook/infer/commit/e4c65eb2a1851fb8aa02c1f632dc1a8274189b28)
 - [Infer docker notes](https://hackmd.io/6zHcdQEpSsaZxA8RfpCOsQ)

@@ -9,11 +9,11 @@ draft: false
 
 This dockerfile [didn't make it](https://github.com/sysprog21/rv32emu/pull/328) into the upstream repo because of "the specific utilization context of Docker images, which are designed to streamline deployment processes for particular objectives, rather than encompassing a comprehensive solution".
 
-But nevertheless, I am using it for my day-to-day development on my M1 Macbook, and I find it useful since it won't pollute my MacOS and also provides Linux-like environment. 
+But nevertheless, I am using it for my day-to-day development on my M1 Macbook, and I find it useful since it won't pollute my MacOS and also provides Linux-like environment.
 
 Hopefully you will find this useful, too!
 
-# The `dockerfile`
+## The `dockerfile`
 
 Assuming that you copy-paste the content into a file named `Dockerfile-dev`.
 
@@ -28,7 +28,7 @@ FROM sysprog21/rv32emu-gcc as base_gcc
 FROM sysprog21/rv32emu-sail as base_sail
 
 # for C++20
-FROM ubuntu:23.10 as final 
+FROM ubuntu:23.10 as final
 
 # https://code.visualstudio.com/remote/advancedcontainers/add-nonroot-user#_creating-a-nonroot-user
 # add a non-root user
@@ -68,7 +68,7 @@ ENV RISCV=/opt/riscv
 ENV PATH=$RISCV/bin:$PATH
 COPY --chown=$USERNAME:$USERNAME --from=base_gcc /opt/riscv/ /opt/riscv/
 
-# replace the emulator (riscv_sim_RV32) with the arch that the container can execute 
+# replace the emulator (riscv_sim_RV32) with the arch that the container can execute
 RUN rm /home/$USERNAME/rv32emu/tests/arch-test-target/sail_cSim/riscv_sim_RV32
 COPY --chown=$USERNAME:$USERNAME --from=base_sail /home/root/riscv_sim_RV32 /home/$USERNAME/rv32emu/tests/arch-test-target/sail_cSim/riscv_sim_RV32
 
@@ -77,5 +77,6 @@ WORKDIR /home/$USERNAME/rv32emu
 RUN make distclean
 ```
 
-## Docker Hub images for the compiler and Sail
-Notice that the [RISC-V compiler toolchain](https://hub.docker.com/repository/docker/sysprog21/rv32emu-gcc/general) and [Sail](https://hub.docker.com/repository/docker/sysprog21/rv32emu-sail/general) are both [pre-compiled images (available on Docker Hub)](https://github.com/sysprog21/rv32emu/commit/d212f96ac03a8d1ec82932660a653bd7794cf36e), as the offical images are only available for x86 at the time of writring so we need to compile-from-source for M1.
+### Docker Hub images for the compiler and Sail
+
+Notice that the [RISC-V compiler toolchain](https://hub.docker.com/r/sysprog21/rv32emu-gcc) and [Sail](https://hub.docker.com/r/sysprog21/rv32emu-sail) are both [pre-compiled images (available on Docker Hub)](https://github.com/sysprog21/rv32emu/commit/d212f96ac03a8d1ec82932660a653bd7794cf36e), as the official images are only available for x86 at the time of writing so we need to compile-from-source for M1.

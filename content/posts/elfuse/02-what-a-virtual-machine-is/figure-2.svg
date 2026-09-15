@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" width="720" height="400" font-family="sans-serif" font-size="14" fill="currentColor" stroke="currentColor">
+  <style>svg{color:#1d1e20}.bg{fill:#fff}@media (prefers-color-scheme:dark){svg{color:#dadadb}.bg{fill:#1d1e20}}</style>
+  <rect class="bg" width="720" height="400" stroke="none"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" stroke="none"/>
+    </marker>
+  </defs>
+  <g stroke-width="1.5" fill="none">
+    <rect x="30" y="40" width="300" height="250" stroke-dasharray="6 4"/>
+    <rect x="60" y="80" width="240" height="70"/>
+    <rect x="60" y="190" width="240" height="70"/>
+    <rect x="390" y="40" width="300" height="250" stroke-dasharray="6 4"/>
+    <rect x="420" y="80" width="240" height="70"/>
+    <rect x="420" y="190" width="240" height="70"/>
+    <rect x="30" y="320" width="660" height="50"/>
+    <line x1="500" y1="150" x2="500" y2="190" marker-end="url(#a)"/>
+    <line x1="580" y1="190" x2="580" y2="150" marker-end="url(#a)"/>
+    <line x1="540" y1="260" x2="540" y2="320" marker-end="url(#a)"/>
+    <line x1="180" y1="320" x2="180" y2="260" marker-end="url(#a)"/>
+    <line x1="140" y1="260" x2="140" y2="320" marker-end="url(#a)"/>
+    <line x1="180" y1="190" x2="180" y2="150" marker-end="url(#a)"/>
+  </g>
+  <g stroke="none" text-anchor="middle">
+    <text x="180" y="30">elfuse process (macOS)</text>
+    <text x="540" y="30">virtual machine</text>
+    <text x="180" y="112">syscall handlers</text>
+    <text x="180" y="132" font-size="12">src/syscall/</text>
+    <text x="180" y="222">vCPU thread</text>
+    <text x="180" y="242" font-size="12">hv_vcpu_run() in a loop</text>
+    <text x="540" y="112">EL0: the Linux program</text>
+    <text x="540" y="132" font-size="12">build/test-hello</text>
+    <text x="540" y="222">EL1: the shim</text>
+    <text x="540" y="242" font-size="12">src/core/shim.S</text>
+    <text x="360" y="350">EL2: hypervisor in the macOS kernel</text>
+    <g font-size="12" text-anchor="start">
+      <text x="440" y="175">svc #0</text>
+      <text x="588" y="175">eret</text>
+      <text x="548" y="310">hvc #5</text>
+      <text x="188" y="310">exit</text>
+    </g>
+    <g font-size="12" text-anchor="end">
+      <text x="132" y="310">run</text>
+    </g>
+  </g>
+</svg>

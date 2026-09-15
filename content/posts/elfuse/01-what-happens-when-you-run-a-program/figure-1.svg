@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" width="720" height="300" font-family="sans-serif" font-size="14" fill="currentColor" stroke="currentColor">
+  <style>svg{color:#1d1e20}.bg{fill:#fff}@media (prefers-color-scheme:dark){svg{color:#dadadb}.bg{fill:#1d1e20}}</style>
+  <rect class="bg" width="720" height="300" stroke="none"/>
+  <g stroke-width="1.5" fill="none">
+    <rect x="40" y="30" width="260" height="50"/>
+    <rect x="40" y="130" width="260" height="50"/>
+    <rect x="40" y="230" width="260" height="50"/>
+    <rect x="420" y="30" width="260" height="50"/>
+    <rect x="420" y="130" width="260" height="50"/>
+    <rect x="420" y="230" width="260" height="50"/>
+    <line x1="170" y1="80" x2="170" y2="130" marker-end="url(#a)"/>
+    <line x1="170" y1="180" x2="170" y2="230" marker-end="url(#a)"/>
+    <line x1="550" y1="80" x2="550" y2="130" marker-end="url(#a)"/>
+    <line x1="550" y1="180" x2="550" y2="230" marker-end="url(#a)"/>
+    <line x1="20" y1="105" x2="700" y2="105" stroke-dasharray="6 4"/>
+  </g>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" stroke="none"/>
+    </marker>
+  </defs>
+  <g stroke="none" text-anchor="middle">
+    <text x="170" y="20">Linux</text>
+    <text x="550" y="20">macOS</text>
+    <text x="170" y="60">hello (ELF)</text>
+    <text x="550" y="60">ls (Mach-O)</text>
+    <text x="170" y="160">Linux kernel</text>
+    <text x="550" y="160">macOS kernel</text>
+    <text x="170" y="260">aarch64 processor</text>
+    <text x="550" y="260">aarch64 processor</text>
+    <g font-size="12">
+      <text x="250" y="98">svc #0, x8 = 64</text>
+      <text x="640" y="98">svc #0x80, x16 = 4</text>
+      <text x="360" y="100">user mode</text>
+      <text x="360" y="120">kernel mode</text>
+    </g>
+  </g>
+</svg>

@@ -25,3 +25,15 @@ To start a new diary post, please run `hugo new content --kind diary posts/diary
 The posts are all in the directory `content/posts`.
 
 No need to build and push the artifacts anymore, CI will take care of it! ^_^
+
+## Checks
+
+Every pull request builds the site (drafts included) and runs markdownlint, typos, an offline link check, and actionlint; see `.github/workflows/ci.yml`.
+
+To run the content checks locally:
+
+```sh
+npx markdownlint-cli2
+typos
+lychee --offline 'content/**/*.md' README.md AGENTS.md
+```

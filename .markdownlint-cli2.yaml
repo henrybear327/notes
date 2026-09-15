@@ -1,0 +1,26 @@
+config:
+  # Most posts are written with one line per paragraph, and the CJK ones
+  # cannot be wrapped: each line break renders as a space between characters.
+  MD013: false
+  # Pasted tool output (objdump, plist dumps) keeps its tabs.
+  MD010:
+    code_blocks: false
+  MD024:
+    siblings_only: true
+  # A blank line around a fence inside a list item makes the whole list
+  # loose, which wraps every item in <p> and changes the spacing.
+  MD031:
+    list_items: false
+  # Pipe spacing inside tables is source layout only; "|---|" delimiter
+  # rows render the same as padded ones.
+  MD060: false
+
+globs:
+  - "content/**/*.md"
+  - "*.md"
+
+ignores:
+  - ".claude/**"
+  - "public/**"
+  - "resources/**"
+  - "themes/**"

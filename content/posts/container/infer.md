@@ -9,7 +9,7 @@ draft: false
 
 In order to leverage the latest [Infer](https://github.com/facebook/infer) features to check all C/C++ and Python source code in [rv32emu](https://github.com/sysprog21/rv32emu), we need to compile it from source, since at the time of writing, the official release version is stuck at [v1.1.0](https://github.com/facebook/infer/releases/tag/v1.1.0) from May, 2021.
 
-The daily build is triggered and pushed to [sysprog21's Docker Hub infer repo](https://hub.docker.com/repository/docker/sysprog21/infer/general) at UTC+8 0:00 every day. *Notice that this Docker image only runs on x86*.
+The daily build is triggered and pushed to [sysprog21's Docker Hub infer repo](https://hub.docker.com/r/sysprog21/infer) at UTC+8 0:00 every day. *Notice that this Docker image only runs on x86*.
 
 ## The `dockerfile`
 

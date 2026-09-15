@@ -79,4 +79,4 @@ RUN make distclean
 
 ### Docker Hub images for the compiler and Sail
 
-Notice that the [RISC-V compiler toolchain](https://hub.docker.com/repository/docker/sysprog21/rv32emu-gcc/general) and [Sail](https://hub.docker.com/repository/docker/sysprog21/rv32emu-sail/general) are both [pre-compiled images (available on Docker Hub)](https://github.com/sysprog21/rv32emu/commit/d212f96ac03a8d1ec82932660a653bd7794cf36e), as the official images are only available for x86 at the time of writing so we need to compile-from-source for M1.
+Notice that the [RISC-V compiler toolchain](https://hub.docker.com/r/sysprog21/rv32emu-gcc) and [Sail](https://hub.docker.com/r/sysprog21/rv32emu-sail) are both [pre-compiled images (available on Docker Hub)](https://github.com/sysprog21/rv32emu/commit/d212f96ac03a8d1ec82932660a653bd7794cf36e), as the official images are only available for x86 at the time of writing so we need to compile-from-source for M1.

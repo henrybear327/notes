@@ -12,7 +12,7 @@ Please check the [official instructions](https://github.com/adityatelange/hugo-P
 
 ### Set up
 
-For the config, please check [this page](https://adityatelange.github.io/hugo-PaperMod/posts/papermod/papermod-variables/) for all available options.
+For the config, please check [this page](https://github.com/adityatelange/hugo-PaperMod/wiki/Variables) for all available options.
 
 For other usages, please check the [demo blog posts](https://adityatelange.github.io/hugo-PaperMod/archives/).
 

@@ -9,17 +9,17 @@ draft: false
 
 Connecting to remote servers directly over the internet can be a recipe for disaster. Let's explore why SSH jump hosts are a secure and efficient solution, along with how they typically work.
 
-# The Problem: Wide Open Gates
+## The Problem: Wide Open Gates
 
 Imagine a network with critical servers tucked away behind a firewall, like a medieval city within a fortified wall. Directly connecting (SSH) to these servers from the open internet would be like leaving the city gates wide open – anyone could potentially exploit a vulnerability and gain unauthorized access.
 
-If you have ever set up a [ssh honey pot](https://github.com/jaksi/sshesame) before, you will be surprised by how much attach traffic are coming in each day!
+If you have ever set up a [ssh honey pot](https://github.com/jaksi/sshesame) before, you will be surprised by how much attack traffic are coming in each day!
 
-# The Solution: A Secure Gateway - The Jump Host
+## The Solution: A Secure Gateway - The Jump Host
 
 Enter the SSH jump host – a strategically placed server outside the firewall, acting as a secure gateway.  Think of it as a heavily guarded checkpoint before entering the city.  Users first connect to the jump host using SSH, then use it as a springboard to access the desired internal servers.
 
-# Benefits of a Jump Host Architecture
+## Benefits of a Jump Host Architecture
 
 There are several advantages to this approach:
 
@@ -27,7 +27,7 @@ There are several advantages to this approach:
 - Centralized Access Control: Permissions for accessing internal servers are managed on the jump host, simplifying administration and reducing the risk of human error. Imagine having just one key (jump host access) instead of keys for every server!
 - Improved Audit Logging: All SSH activity is funneled through the jump host, making it easier to track user actions and identify suspicious behavior. Think of it like a logbook at the checkpoint, recording who enters and exits the city.
 
-# Typical Jump Host Setup
+## Typical Jump Host Setup
 
 Here's a breakdown of a typical jump host architecture:
 
@@ -37,13 +37,14 @@ Here's a breakdown of a typical jump host architecture:
 SSH Tunneling: Once logged into the jump host, users can securely tunnel connections to the internal servers through the secure jump host environment. Imagine a secret passage within the city walls!
 
 For example:
-```
+
+```text
 Client A ---- Jump Host ---- Target Server
 ```
 
-# SSH connection usage tips
+## SSH connection usage tips
 
-## With command line
+### With command line
 
 Use `-A` if you want to enables forwarding of connections from an authentication agent such as ssh-agent.
 
@@ -51,9 +52,9 @@ Use `-A` if you want to enables forwarding of connections from an authentication
 ssh -A -J user@jump_server:port  user@destination_server:port
 ```
 
-## With `~/.ssh/config`
+### With `~/.ssh/config`
 
-```
+```text
 ### First jumphost. Directly reachable
 Host jumphost
     HostName jumphost.example.org
@@ -64,16 +65,18 @@ Host targetServer
     ProxyJump jumphost
 ```
 
-Now you can do `ssh targetServer`! Easy :) 
+Now you can do `ssh targetServer`! Easy :)
 
-### scp usage tips
+#### scp usage tips
 
-Since we can do `ssh targetServer` directly, we can also move files around easily by 
-```
+Since we can do `ssh targetServer` directly, we can also move files around easily by
+
+```sh
 scp -r targetServer:/full/file/path .
 ```
 
-# References
-- https://www.tecmint.com/access-linux-server-using-a-jump-host/
+## References
+
+- <https://www.tecmint.com/access-linux-server-using-a-jump-host/>
 
 > Written with help from Gemini :D

@@ -2,7 +2,7 @@
 
 Welcome!
 
-# Installation
+## Installation
 
 When cloning for the first time, please run `git submodule update --init --recursive`.
 
@@ -10,13 +10,13 @@ After that, you can run `hugo serve` to see the website rendered locally.
 
 Please check the [official instructions](https://github.com/adityatelange/hugo-PaperMod/wiki/Installation) for more details.
 
-## Set up
+### Set up
 
 For the config, please check [this page](https://adityatelange.github.io/hugo-PaperMod/posts/papermod/papermod-variables/) for all available options.
 
 For other usages, please check the [demo blog posts](https://adityatelange.github.io/hugo-PaperMod/archives/).
 
-# Post
+## Post
 
 To start a new post, please run `hugo new content posts/<filename>.md`.
 

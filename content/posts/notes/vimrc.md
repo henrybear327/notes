@@ -9,9 +9,9 @@ draft: false
 
 My simple `.vimrc` file which I am using for servers.
 
-# `.vimrc`
+## `.vimrc`
 
-Just copy the following text and paste it to `~/.vimrc`, open `vim`, and you are good to go! :) 
+Just copy the following text and paste it to `~/.vimrc`, open `vim`, and you are good to go! :)
 
 ```vim
 set number              " Show line numbers

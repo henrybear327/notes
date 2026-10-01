@@ -70,7 +70,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
       - name: Check spelling
-        uses: crate-ci/typos@v1.50.2
+        uses: crate-ci/typos@v1.50.3
 
   links:
     runs-on: ubuntu-latest

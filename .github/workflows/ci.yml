@@ -54,7 +54,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
       - name: Lint Markdown
-        uses: DavidAnson/markdownlint-cli2-action@v24
+        uses: DavidAnson/markdownlint-cli2-action@v25
       - name: Reject em dashes
         env:
           LC_ALL: C.UTF-8
@@ -70,7 +70,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
       - name: Check spelling
-        uses: crate-ci/typos@v1.50.2
+        uses: crate-ci/typos@v1.51.1
 
   links:
     runs-on: ubuntu-latest
